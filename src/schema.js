@@ -17,10 +17,18 @@ export const typeDefs = gql`
     image: String!
     id: ID!
     category: Category!
+    reviews: [Review!]!
   }
   type Category {
     name: String!
     id: ID!
     products: [Product!]!
+  }
+  type Review {
+    id: ID!
+    date: String!
+    title: String!
+    comment: String!
+    rating: Int!
   }
 `;

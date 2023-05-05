@@ -3,8 +3,7 @@ import { typeDefs } from "./schema.js";
 import { Query } from "./resolvers/Query.js";
 import { Category } from "./resolvers/Category.js";
 import { Product } from "./resolvers/Product.js";
-import { categories } from "./db/categories.js";
-import { products } from "./db/products.js";
+import { categories, products, reviews } from "./db/index.js";
 
 const server = new ApolloServer({
   typeDefs,
@@ -16,6 +15,7 @@ const server = new ApolloServer({
   context: {
     categories,
     products,
+    reviews,
   },
 });
 server.listen().then(({ url }) => {

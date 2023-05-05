@@ -4,4 +4,7 @@ export const Product = {
     const { categoryId } = parent;
     return categories.find((category) => category.id === categoryId);
   },
+  reviews: ({ id }, args, { reviews }) => {
+    return reviews.filter((review) => review.productId === id);
+  },
 };
