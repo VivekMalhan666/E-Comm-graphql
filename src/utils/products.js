@@ -1,5 +1,3 @@
-const { ApolloServer, gql } = require("apollo-server");
-
 const products = [
   {
     id: "53a0724c-a416-4cac-ae45-bfaedce1f147",
@@ -83,40 +81,4 @@ const products = [
     onSale: false,
   },
 ];
-
-const typeDefs = gql`
-  type Query {
-    hello: String
-    products: [Product!]!
-    product(id: ID!): Product
-  }
-  type Product {
-    name: String!
-    description: String!
-    quantity: Int!
-    price: Float!
-    onSale: Boolean!
-    image: String!
-    id: ID!
-  }
-`;
-
-const resolvers = {
-  Query: {
-    hello: () => "Hello World",
-    products: () => {
-      return products;
-    },
-    product: (parent, args, context) => {
-      const productId = args.id;
-      const product = products.find((product) => product.id === productId);
-      if (!product) return null;
-      return product;
-    },
-  },
-};
-
-const server = new ApolloServer({ typeDefs, resolvers });
-server.listen().then(({ url }) => {
-  console.log(url);
-});
+export { products };
