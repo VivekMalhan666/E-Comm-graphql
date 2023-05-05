@@ -1,8 +1,6 @@
 import { ApolloServer } from "apollo-server";
 import { typeDefs } from "./schema.js";
-import { Query } from "./resolvers/Query.js";
-import { Category } from "./resolvers/Category.js";
-import { Product } from "./resolvers/Product.js";
+import { Query, Category, Product, Mutation } from "./resolvers/index.js";
 import { categories, products, reviews } from "./db/index.js";
 
 const server = new ApolloServer({
@@ -11,6 +9,7 @@ const server = new ApolloServer({
     Query,
     Category,
     Product,
+    Mutation,
   },
   context: {
     categories,

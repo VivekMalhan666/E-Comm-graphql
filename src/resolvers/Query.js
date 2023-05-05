@@ -29,7 +29,7 @@ export const Query = {
     const product = products.find((product) => product.id === args.id);
     return product;
   },
-  categories: () => categories,
+  categories: (parent, args, { categories }) => categories,
   category: (parent, args, context) => {
     const { categories } = context;
     const category = categories.find((category) => category.id === args.id);
