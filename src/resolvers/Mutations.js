@@ -30,4 +30,19 @@ export const Mutation = {
     reviews.push(newReview);
     return newReview;
   },
+  deleteCategory: (parent, { input }, { categories, products }) => {
+    const { id } = input;
+    const categoryToBeDeleted = categories.filter(
+      (category) => id === category.id
+    );
+    categories.pop(categoryToBeDeleted);
+    const newId = {
+      categoryId: null,
+    };
+    products = products.map((product) =>
+      product.categoryId === id ? { ...product, ...newId } : { ...product }
+    );
+    console.log(products);
+    return true;
+  },
 };
