@@ -42,7 +42,18 @@ export const Mutation = {
     products = products.map((product) =>
       product.categoryId === id ? { ...product, ...newId } : { ...product }
     );
-    console.log(products);
+    return true;
+  },
+  deleteProduct: (parent, { input }, { products, reviews }) => {
+    const { id } = input;
+    const deletedProduct = products.filter((product) => product.id === id);
+    const deletedReviews = reviews.filter((review) => review.productId === id);
+    reviews.pop(deletedReviews);
+    products.pop(deletedProduct);
+    return deletedProduct ? true : false;
+  },
+  deleteReview: (parent, { input }, { reviews }) => {
+    reviews = reviews.filter((review) => review.id === input.id);
     return true;
   },
 };
