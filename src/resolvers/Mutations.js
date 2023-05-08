@@ -56,4 +56,25 @@ export const Mutation = {
     reviews = reviews.filter((review) => review.id === input.id);
     return true;
   },
+  updateCategory: (parent, { input }, { categories }) => {
+    const { id } = input;
+    const index = categories.findIndex((category) => category.id === id);
+    categories[index] = { ...categories[index], ...input };
+    return categories[index];
+  },
+  updateReview: (parent, { input }, { reviews }) => {
+    const { id } = input;
+    const index = reviews.findIndex((review) => review.id === id);
+    reviews[index] = { ...reviews[index], ...input };
+    return reviews[index];
+  },
+  updateProduct: (parent, { input }, { products }) => {
+    const { id } = input;
+    const index = products.findIndex((product) => product.id === id);
+    products[index] = {
+      ...products[index],
+      ...input,
+    };
+    return products[index];
+  },
 };
