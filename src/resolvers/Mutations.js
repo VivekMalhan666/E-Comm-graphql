@@ -59,18 +59,21 @@ export const Mutation = {
   updateCategory: (parent, { input }, { categories }) => {
     const { id } = input;
     const index = categories.findIndex((category) => category.id === id);
+    if (index === -1) return null;
     categories[index] = { ...categories[index], ...input };
     return categories[index];
   },
   updateReview: (parent, { input }, { reviews }) => {
     const { id } = input;
     const index = reviews.findIndex((review) => review.id === id);
+    if (index === -1) return null;
     reviews[index] = { ...reviews[index], ...input };
     return reviews[index];
   },
   updateProduct: (parent, { input }, { products }) => {
     const { id } = input;
     const index = products.findIndex((product) => product.id === id);
+    if (index === -1) return null;
     products[index] = {
       ...products[index],
       ...input,
